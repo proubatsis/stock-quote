@@ -1,4 +1,4 @@
 apiVersion: v1
 description: A Helm chart for Kubernetes
-name: stockquote
+name: stock-quote
 version: 1.0.0
