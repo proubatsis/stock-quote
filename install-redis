@@ -1,0 +1,3 @@
+#!/bin/bash
+helm install --name redis-stock-quote ibm-charts/ibm-redis-ha-dev
+

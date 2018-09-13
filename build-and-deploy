@@ -1,0 +1,7 @@
+kubectl delete -f manifests/
+mvn package && \
+docker build -t stock-quote:latest . && \
+docker tag stock-quote:latest mycluster.icp:8500/default/stock-quote:pr && \
+docker push mycluster.icp:8500/default/stock-quote:pr && \
+sleep 3 && \
+kubectl apply -f manifests/

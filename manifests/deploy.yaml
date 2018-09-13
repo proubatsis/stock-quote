@@ -29,11 +29,11 @@ spec:
       containers:
       - name: stock-quote
 #       image: stock-quote:latest # Microservice Builder
-#       image: mycluster.icp:8500/stock-trader/stock-quote:latest # IBM Cloud Private
+        image: mycluster.icp:8500/default/stock-quote:pr # IBM Cloud Private
 #       image: registry.ng.bluemix.net/stock_trader/stock-quote:latest # IBM Container Service
 #       Note: this manifests/deploy.yaml will be used when we want to deploy this directly using kubectl or a helm chart. 
 #             Microclimate uses the Charts folder so we can actually have both options
-        image: ibmstocktrader/stock-quote:latest # DockerHub
+        # image: ibmstocktrader/stock-quote:latest # DockerHub
         env:
           - name: REDIS_URL
             valueFrom:
@@ -76,20 +76,20 @@ spec:
       targetPort: 9443
   selector:
     app: stock-quote
----   
+# ---   
 #Configure the ingress 
-apiVersion: extensions/v1beta1
-kind: Ingress
-metadata:
-  name: stock-quote-ingress
-# namespace: stock-trader
-  annotations:
-    kubernetes.io/ingress.class: "istio"
-spec:
-  rules:
-  - http:
-      paths:
-      - path: /stock-quote/.*
-        backend:
-          serviceName: stock-quote-service
-          servicePort: 9080
+# apiVersion: extensions/v1beta1
+# kind: Ingress
+# metadata:
+#   name: stock-quote-ingress
+# # namespace: stock-trader
+#   annotations:
+#     kubernetes.io/ingress.class: "istio"
+# spec:
+#   rules:
+#   - http:
+#       paths:
+#       - path: /stock-quote/.*
+#         backend:
+#           serviceName: stock-quote-service
+#           servicePort: 9080
